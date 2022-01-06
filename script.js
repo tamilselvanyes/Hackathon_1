@@ -104,6 +104,20 @@ function showData(result, text){
         document.body.removeChild(temp_1);
     }
 
+    //Clearing the search input after showing the result.
+    let element = document.getElementById('search');
+    if(element != null){
+        element.value = "";
+    }
+
+    //handling when internal server error occurs
+    if(result.status == "500"){
+        showEndcredit(result);
+        return;
+        
+    }
+    
+
     
     var container = document.createElement('div');
     container.setAttribute('class','container-lg');
@@ -225,16 +239,18 @@ function showData(result, text){
         document.getElementById("no_of_episode_value"+i).innerHTML = result.results[i].episodes;
     }
 
-    //Clearing the search input after showing the result.
-    let element = document.getElementById('search');
-    if(element != null){
-        element.value = "";
-    }
+    showEndcredit(result);
+}
 
+function showEndcredit(result){ 
     var end_credits = document.createElement('p');
-    end_credits.innerHTML = "--End of Search Result--";
+    // sometimes when internal server error happens it is handled here...
+    if(result.status == "500"){
+        end_credits.innerHTML = "--Oops no results found, Search again--";
+    }else{
+        end_credits.innerHTML = "--End of Search Result--";
+    }
     end_credits.className = "end_credits";
     end_credits.id = "end_credits"
     document.body.append(end_credits);
-
 }
