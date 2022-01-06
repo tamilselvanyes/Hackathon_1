@@ -232,10 +232,19 @@ function showData(result, text){
         
 
         //calculation only the date from the string format
-        var startDate = new Date(result.results[i].start_date);
-        document.getElementById("start_date_value"+i).innerHTML = startDate.toDateString();
-        var endDate = new Date(result.results[i].end_date);
-        document.getElementById("end_date_value"+i).innerHTML = endDate.toDateString();
+        //handled when data is null 
+        if(result.results[i].start_date == null){
+            document.getElementById("start_date_value"+i).innerHTML = "-";
+        }else{
+            var startDate = new Date(result.results[i].start_date);
+            document.getElementById("start_date_value"+i).innerHTML = startDate.toDateString();
+        }
+        if(result.results[i].end_date == null){
+            document.getElementById("end_date_value"+i).innerHTML = "-";
+        }else{
+            var endDate = new Date(result.results[i].end_date);
+            document.getElementById("end_date_value"+i).innerHTML = endDate.toDateString();
+        }
         document.getElementById("no_of_episode_value"+i).innerHTML = result.results[i].episodes;
     }
 
