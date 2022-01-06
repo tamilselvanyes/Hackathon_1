@@ -99,6 +99,11 @@ function showData(result, text){
         document.body.removeChild(temp);
     }
 
+    let temp_1 = document.getElementById("end_credits");
+    if(temp_1){
+        document.body.removeChild(temp_1);
+    }
+
     
     var container = document.createElement('div');
     container.setAttribute('class','container-lg');
@@ -226,7 +231,10 @@ function showData(result, text){
         element.value = "";
     }
 
-    
- 
+    var end_credits = document.createElement('p');
+    end_credits.innerHTML = "--End of Search Result--";
+    end_credits.className = "end_credits";
+    end_credits.id = "end_credits"
+    document.body.append(end_credits);
 
 }

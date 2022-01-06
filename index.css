@@ -69,3 +69,9 @@ h1{
 .container-lg{
     margin-top:20px;
 }
+
+.end_credits{
+    font-size: 20px;
+    text-align:center;
+    font-weight: bold;
+}
